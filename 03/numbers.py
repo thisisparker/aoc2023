@@ -22,6 +22,17 @@ def main(input_lines):
                                 and 0 <= coord[1] < len(input_lines)]
 
                 for b in adj_blocks:
+                    # I got lucky and this conditional does the right thing on the input
+                    # data even though it is not correct. (I re-wrote it after submitting
+                    # and had previously used an any() function instead of this for loop.)
+                    #
+                    # I believe the input data was constructed such that no number is
+                    # adjacent to more then one symbol, but that was just a lucky property,
+                    # not specified in the problem text.
+                    #
+                    # The any() code also is a little more efficient! We shouldn't be
+                    # checking every single adjacent space, when a single symbol in any
+                    # of them is enough to include the number.
                     if input_lines[b[1]][b[0]] not in '.0123456789':
                         running_total += int(current_num)
                     if input_lines[b[1]][b[0]] == '*':
